@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, Code2, ExternalLink, FolderGit2, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Code2, Download, ExternalLink, FolderGit2, ShieldCheck } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { CopyButton } from "@/components/CopyButton";
+import { MncLogo } from "@/components/MncLogo";
 import { OPEN_SOURCE_PREVIEWS } from "@/lib/projectData";
 import { SEPOLIA_ETHERSCAN_TOKEN } from "@/lib/sepoliaRpc";
 
@@ -214,6 +215,68 @@ export default function OpenSourcePage() {
           >
             <code id="opensource-code-snippet">{activeFile.code}</code>
           </pre>
+        </div>
+      </section>
+
+      {/* Official Brand & Social Media Assets */}
+      <section
+        aria-labelledby="brand-kit-heading"
+        className="mt-12 rounded-3xl border border-[#D9B66C]/30 bg-obsidian-900/90 p-6 sm:p-8"
+      >
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-4">
+            <MncLogo className="h-16 w-16 shrink-0" ariaLabel="MiniChain & MNC Official Logo" />
+            <div>
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#EAC77B]">
+                {t("Official Visual Identity", "统一官方品牌视觉素材")}
+              </span>
+              <h2 id="brand-kit-heading" className="mt-0.5 text-xl font-bold text-white">
+                {t("MiniChain & MNC Brand Assets (SVG + HD PNG)", "MiniChain 与 MNC 官方标志套件 (SVG + 高清 PNG)")}
+              </h2>
+              <p className="mt-1 text-xs font-mono text-slate-400">
+                Coin Face #101D35 · Double Ring #D9B66C · Geometric M #EAC77B · Transparent Exterior
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-2.5">
+            <a
+              href="https://oepjdihc2008.github.io/minichain/brand/mnc-logo.svg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-[#D9B66C]/40 bg-[#101D35] px-3.5 py-2 text-xs font-semibold text-[#EAC77B] hover:border-[#EAC77B]"
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>Logo SVG</span>
+            </a>
+            <a
+              href="https://oepjdihc2008.github.io/minichain/brand/mnc-logo-1024.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-obsidian-950 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-slate-500"
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>PNG 1024px</span>
+            </a>
+            <a
+              href="https://oepjdihc2008.github.io/minichain/brand/mnc-social-preview-1280x640.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-obsidian-950 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-slate-500"
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>Social Card (1280×640)</span>
+            </a>
+            <a
+              href="https://oepjdihc2008.github.io/minichain/brand/mnc-x-header-1500x500.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 bg-obsidian-950 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:border-slate-500"
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>X Banner (1500×500)</span>
+            </a>
+          </div>
         </div>
       </section>
     </div>

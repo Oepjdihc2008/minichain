@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { CopyButton } from "@/components/CopyButton";
+import { MncLogo } from "@/components/MncLogo";
 import {
   BalanceLookupResult,
   ContractInspectionResult,
@@ -142,19 +143,22 @@ export default function MiniScanExplorerPage() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Header & Strict Wallet-Free Security Banner */}
       <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
-        <div>
-          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-sky-400">
-            MiniScan // Read-Only Ethereum Sepolia RPC Explorer
-          </span>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            {t("MiniScan Blockchain Explorer", "MiniScan 只读区块链浏览器")}
-          </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-            {t(
-              "Direct JSON-RPC queries against Ethereum Sepolia (Chain ID 11155111). All figures are fetched live from the network—if an RPC endpoint cannot be reached, fields explicitly report unavailable.",
-              "直接向 Ethereum Sepolia 公共测试网（Chain ID 11155111）发起实时 JSON-RPC 查询。所有结果均为真实链上数据；若网络不可达则明确显示 unavailable，绝不编造。"
-            )}
-          </p>
+        <div className="flex items-start gap-4">
+          <MncLogo className="mt-1 h-12 w-12 shrink-0 sm:h-14 sm:w-14" ariaLabel="MiniChain Coin (MNC) Token Icon" />
+          <div>
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#EAC77B]">
+              MiniScan // Read-Only Ethereum Sepolia RPC Explorer
+            </span>
+            <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              {t("MiniScan Blockchain Explorer", "MiniScan 只读区块链浏览器")}
+            </h1>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
+              {t(
+                "Direct JSON-RPC queries against Ethereum Sepolia (Chain ID 11155111). All figures are fetched live from the network—if an RPC endpoint cannot be reached, fields explicitly report unavailable.",
+                "直接向 Ethereum Sepolia 公共测试网（Chain ID 11155111）发起实时 JSON-RPC 查询。所有结果均为真实链上数据；若网络不可达则明确显示 unavailable，绝不编造。"
+              )}
+            </p>
+          </div>
         </div>
 
         <div className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-xs font-semibold text-emerald-200">
@@ -365,9 +369,12 @@ export default function MiniScanExplorerPage() {
                     />
                   </div>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
                   <span className="text-xs text-slate-400">{t("Token Name & Symbol", "代币名称与符号")}</span>
-                  <span className="font-mono text-xs font-semibold text-white">
+                  <span className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-white">
+                    {contractData.address.toLowerCase() === MNC_CONTRACT_ADDRESS.toLowerCase() && (
+                      <MncLogo className="h-5 w-5 shrink-0" />
+                    )}
                     {contractData.tokenName} ({contractData.tokenSymbol})
                   </span>
                 </div>
@@ -507,9 +514,10 @@ export default function MiniScanExplorerPage() {
                     {balanceData.address.slice(0, 10)}...{balanceData.address.slice(-8)}
                   </code>
                 </div>
-                <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
                   <span className="text-xs text-slate-400">{t("MNC Testnet Balance", "MNC 测试网代币余额")}</span>
-                  <span className="font-mono text-sm font-bold text-sky-300">
+                  <span className="inline-flex items-center gap-1.5 font-mono text-sm font-bold text-[#EAC77B]">
+                    <MncLogo className="h-5 w-5 shrink-0" />
                     {balanceData.mncBalance !== "unavailable"
                       ? `${balanceData.mncBalance} MNC`
                       : "unavailable"}

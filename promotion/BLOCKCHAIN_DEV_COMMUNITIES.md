@@ -1,6 +1,7 @@
 # Blockchain & Systems Developer Communities Outreach
 
 > **Target Channels:** Foundry Community `#showcase`, Ethereum R&D / Systems Study Groups, Open-Source Distributed Systems Forums.  
+> **Brand Asset:** `https://oepjdihc2008.github.io/minichain/brand/mnc-social-preview-1280x640.png` (and `mnc-logo-512.png` for server/bot icons).  
 > **Rules:** Post only in designated `#showcase` or `#open-source` channels; never DM strangers, never cross-post repetitively, and keep discussion strictly on engineering & testing.
 
 ---

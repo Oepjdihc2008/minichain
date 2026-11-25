@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ExternalLink, ShieldAlert } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import { MncLogo } from "./MncLogo";
 import { MNC_CONTRACT_ADDRESS, SEPOLIA_ETHERSCAN_TOKEN } from "@/lib/sepoliaRpc";
 
 export function Footer() {
@@ -27,7 +28,10 @@ export function Footer() {
 
         <div className="grid gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
-            <p className="text-base font-bold text-white">MiniChain Open-Source Lab</p>
+            <div className="flex items-center gap-3">
+              <MncLogo className="h-8 w-8 shrink-0" />
+              <p className="text-base font-bold text-white">MiniChain Open-Source Lab</p>
+            </div>
             <p className="mt-2 max-w-md text-sm text-slate-400">
               {t(
                 "From scratch SHA-256 PoW, Ed25519 validator voting, BFT quorum intersection, SQLite-persisted locking, and Foundry-verified Solidity smart contracts.",

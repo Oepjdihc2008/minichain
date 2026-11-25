@@ -1,6 +1,12 @@
-# MiniChain（简体中文说明）
+<p align="center">
+  <img src="./docs/assets/mnc-logo.svg" alt="MiniChain & MNC 官方品牌标志" width="116" height="116" />
+</p>
 
-**开源分布式 BFT 共识实验、崩溃安全持久化与 EVM 智能合约工程研究项目**
+<h1 align="center">MiniChain（简体中文说明）</h1>
+
+<p align="center">
+  <strong>开源分布式 BFT 共识实验、崩溃安全持久化与 EVM 智能合约工程研究项目</strong>
+</p>
 
 **[访问官方网站](https://oepjdihc2008.github.io/minichain/)** · **[MiniScan 链上浏览器](https://oepjdihc2008.github.io/minichain/explorer/)** · [English](./README.md) | 简体中文
 

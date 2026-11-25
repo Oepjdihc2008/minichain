@@ -7,6 +7,7 @@
 - **Repository Name:** `minichain`
 - **About Description (<= 160 chars):**
   `From-scratch BFT consensus & EVM smart contract engineering lab: Ed25519 2-phase QCs, SQLite lock-before-sign, 30k Foundry fuzz runs & read-only Sepolia explorer.`
+- **Official Brand Kit:** `docs/assets/brand/` (`mnc-logo.svg`, `mnc-logo-1024.png`, `mnc-social-preview-1280x640.png` — upload `mnc-social-preview-1280x640.png` under GitHub Repo Settings → Social Preview).
 - **Suggested Topics:**
   `blockchain` · `distributed-systems` · `bft-consensus` · `solidity` · `foundry` · `erc20` · `ed25519` · `sqlite` · `fuzz-testing` · `ethereum-sepolia`
 

@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BookOpen, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
+import { MncLogo } from "@/components/MncLogo";
 import {
   MNC_CONTRACT_ADDRESS,
   MNC_DEPLOYMENT_BLOCK,
@@ -397,16 +398,26 @@ export default function DocsPage() {
                 hidden={!isSelected ? true : undefined}
               >
                 <div className="rounded-3xl border border-indigo-500/25 bg-obsidian-900/90 p-6 sm:p-10">
-                  <div className="flex items-center gap-2 text-xs font-mono text-indigo-300">
-                    <BookOpen className="h-4 w-4" aria-hidden="true" />
-                    <span>MINICHAIN DOCS // {sec.id.toUpperCase()}</span>
+                  <div className="flex items-start gap-4">
+                    {sec.id === "whitepaper" && (
+                      <MncLogo
+                        className="h-14 w-14 shrink-0"
+                        ariaLabel="MiniChain Official Brand Emblem"
+                      />
+                    )}
+                    <div>
+                      <div className="flex items-center gap-2 text-xs font-mono text-indigo-300">
+                        <BookOpen className="h-4 w-4" aria-hidden="true" />
+                        <span>MINICHAIN DOCS // {sec.id.toUpperCase()}</span>
+                      </div>
+                      <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
+                        {t(sec.titleEn, sec.titleZh)}
+                      </h2>
+                      <p className="mt-2 text-sm sm:text-base text-slate-300">
+                        {t(sec.summaryEn, sec.summaryZh)}
+                      </p>
+                    </div>
                   </div>
-                  <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
-                    {t(sec.titleEn, sec.titleZh)}
-                  </h2>
-                  <p className="mt-2 text-sm sm:text-base text-slate-300">
-                    {t(sec.summaryEn, sec.summaryZh)}
-                  </p>
 
                   <div className="mt-8 space-y-8 border-t border-slate-800 pt-8">
                     {sec.blocks.map((b) => (

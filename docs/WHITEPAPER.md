@@ -1,5 +1,10 @@
+<p align="center">
+  <img src="./assets/mnc-logo.svg" alt="MiniChain & MNC Official Brand Emblem" width="104" height="104" />
+</p>
+
 # MiniChain Technical Whitepaper (v1.0)
 
+> **Official Brand Identity:** First-Generation Deep Navy & Gold Coin Emblem (`#101D35` coin face · `#D9B66C` double concentric ring · `#EAC77B` geometric `M` · transparent exterior) — [`docs/assets/brand/`](./assets/brand/)  
 > **Status:** Experimental Open-Source Systems Engineering Project  
 > **License:** MIT  
 > **Public Testnet Artifact:** Ethereum Sepolia (`Chain ID: 11155111`) — `MNC` (`0x32C80Bb0fd51D32c31b52795a181042BF90E2Ee6`)  

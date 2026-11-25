@@ -1,6 +1,6 @@
 # Reddit Technical Community Posts
 
-> **Platform Rules Compliance:** Strictly technical engineering discussion; zero price/investment talk; clear testnet & non-audit disclosures; tailored to each subreddit's focus. Post individually and organically only after lead approval—never cross-spam simultaneously.
+> **Platform Rules Compliance:** Strictly technical engineering discussion; zero price/investment talk; clear testnet & non-audit disclosures; tailored to each subreddit's focus. Optional visual attachment: `docs/assets/brand/mnc-social-preview-1280x640.png`. Post individually and organically only after lead approval—never cross-spam simultaneously.
 
 ---
 

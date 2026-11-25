@@ -1,6 +1,7 @@
 # X (Twitter) Technical Launch Thread
 
 > **Platform Rules Compliance:** Pure engineering content; zero price/investment claims, zero `$` cashtags, zero spam mentions or engagement bait.  
+> **Attached Visual Asset:** Attach `docs/assets/brand/mnc-social-preview-1280x640.png` to Post 1 (`mnc-x-header-1500x500.png` for profile banner; `mnc-logo-512.png` for avatar).  
 > **Publication Gate:** Ready for review by the project lead before posting.
 
 ---

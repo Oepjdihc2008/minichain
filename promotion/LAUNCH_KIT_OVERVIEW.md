@@ -15,6 +15,8 @@
 
 ## Visual Assets Included
 
+- **Official Unified Brand Logo (SVG & HD PNG):** [`docs/assets/brand/mnc-logo.svg`](../docs/assets/brand/mnc-logo.svg), [`mnc-logo-1024.png`](../docs/assets/brand/mnc-logo-1024.png), [`mnc-logo-512.png`](../docs/assets/brand/mnc-logo-512.png)
+- **Social Media Banners & OpenGraph Cards:** [`mnc-social-preview-1280x640.png`](../docs/assets/brand/mnc-social-preview-1280x640.png), [`mnc-x-header-1500x500.png`](../docs/assets/brand/mnc-x-header-1500x500.png) (see [SOCIAL_MEDIA_BRAND_KIT.md](./SOCIAL_MEDIA_BRAND_KIT.md))
 - **Standalone Technical Architecture SVG:** [`docs/assets/architecture.svg`](../docs/assets/architecture.svg)
 - **MiniScan Live Sepolia Telemetry SVG Card:** [`docs/assets/miniscan-preview.svg`](../docs/assets/miniscan-preview.svg)
 

@@ -1,6 +1,12 @@
-# MiniChain
+<p align="center">
+  <img src="./docs/assets/mnc-logo.svg" alt="MiniChain & MNC Official Logo" width="116" height="116" />
+</p>
 
-**Open-Source Distributed Consensus, Crash-Safe Persistence & EVM Smart Contract Engineering Lab**
+<h1 align="center">MiniChain</h1>
+
+<p align="center">
+  <strong>Open-Source Distributed Consensus, Crash-Safe Persistence &amp; EVM Smart Contract Engineering Lab</strong>
+</p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-6366f1.svg)](./LICENSE)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.28-38bdf8.svg)](./contracts)

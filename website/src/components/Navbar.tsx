@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Globe, Menu, X, ShieldCheck } from "lucide-react";
 import { useLanguage } from "./LanguageProvider";
+import { MncLogo } from "./MncLogo";
 
 const NAV_ITEMS = [
   { href: "/", en: "Home", zh: "首页" },
@@ -33,34 +34,7 @@ export function Navbar() {
           href="/"
           className="group flex items-center gap-3 text-white focus-visible:rounded-lg"
         >
-          <svg
-            viewBox="0 0 36 36"
-            className="h-9 w-9 shrink-0 transition-transform duration-300 group-hover:scale-105"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="mc-brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#38bdf8" />
-                <stop offset="50%" stopColor="#6366f1" />
-                <stop offset="100%" stopColor="#a855f7" />
-              </linearGradient>
-            </defs>
-            <polygon
-              points="18,2 32,10 32,26 18,34 4,26 4,10"
-              fill="rgba(99,102,241,0.14)"
-              stroke="url(#mc-brand-grad)"
-              strokeWidth="2"
-            />
-            <circle cx="18" cy="11" r="2.6" fill="#38bdf8" />
-            <circle cx="11" cy="23" r="2.6" fill="#818cf8" />
-            <circle cx="25" cy="23" r="2.6" fill="#c084fc" />
-            <path
-              d="M18 11 L11 23 L25 23 Z"
-              fill="none"
-              stroke="url(#mc-brand-grad)"
-              strokeWidth="1.6"
-            />
-          </svg>
+          <MncLogo className="h-9 w-9 shrink-0 transition-transform duration-300 group-hover:scale-105" />
           <div>
             <div className="flex items-center gap-2">
               <span className="text-lg font-bold tracking-tight text-white">MiniChain</span>

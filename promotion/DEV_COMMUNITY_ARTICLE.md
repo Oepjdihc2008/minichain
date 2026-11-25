@@ -3,6 +3,7 @@ title: "Building MiniChain From First Principles: BFT Split-Lock Deadlocks, Cras
 published: false
 description: "An open-source engineering tour through SHA-256 PoW, Ed25519 two-phase BFT consensus labs, SQLite durability, and fuzz-tested Solidity 0.8.28 smart contracts on Ethereum Sepolia."
 tags: blockchain, python, solidity, distributedsystems
+cover_image: https://oepjdihc2008.github.io/minichain/brand/mnc-social-preview-1280x640.png
 ---
 
 > **Publication Gate:** Drafted for [DEV Community](https://dev.to). Review and insert final GitHub / live site URLs before publishing.

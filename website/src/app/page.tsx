@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import { CopyButton } from "@/components/CopyButton";
+import { MncLogo } from "@/components/MncLogo";
 import {
   MNC_CONTRACT_ADDRESS,
   MNC_DEPLOYMENT_BLOCK,
@@ -114,15 +115,21 @@ export default function HomePage() {
               </span>
             </div>
 
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              MiniChain
-              <span className="mt-2 block bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl lg:text-4xl">
-                {t(
-                  "From Cryptographic Primitives to BFT Consensus & EVM Verification",
-                  "从密码学原语、BFT 共识实验到 EVM 智能合约形式化测试"
-                )}
-              </span>
-            </h1>
+            <div className="mt-6 flex items-center gap-4">
+              <MncLogo
+                className="h-16 w-16 shrink-0 drop-shadow-[0_0_24px_rgba(234,199,123,0.28)] sm:h-20 sm:w-20"
+                ariaLabel="MiniChain & MNC Official Logo"
+              />
+              <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                MiniChain
+              </h1>
+            </div>
+            <p className="mt-3 bg-gradient-to-r from-[#EAC77B] via-sky-400 to-indigo-400 bg-clip-text text-2xl font-bold text-transparent sm:text-3xl lg:text-4xl">
+              {t(
+                "From Cryptographic Primitives to BFT Consensus & EVM Verification",
+                "从密码学原语、BFT 共识实验到 EVM 智能合约形式化测试"
+              )}
+            </p>
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
               {t(
@@ -318,16 +325,19 @@ export default function HomePage() {
         className="mt-14 rounded-3xl border border-indigo-500/25 bg-obsidian-900/90 p-6 sm:p-8"
       >
         <div className="flex flex-col justify-between gap-4 border-b border-slate-800 pb-6 sm:flex-row sm:items-center">
-          <div>
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-sky-400">
-              {t("Public On-Chain Artifact", "公开链上部署记录")}
-            </span>
-            <h2 id="onchain-record-heading" className="mt-1 text-2xl font-bold text-white">
-              {t(
-                "MiniChain Coin (MNC) on Ethereum Sepolia",
-                "MiniChain Coin (MNC) · Ethereum Sepolia 测试网记录"
-              )}
-            </h2>
+          <div className="flex items-center gap-3.5">
+            <MncLogo className="h-12 w-12 shrink-0" ariaLabel="MiniChain Coin (MNC) Token Emblem" />
+            <div>
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#EAC77B]">
+                {t("Public On-Chain Artifact", "公开链上部署记录")}
+              </span>
+              <h2 id="onchain-record-heading" className="mt-0.5 text-2xl font-bold text-white">
+                {t(
+                  "MiniChain Coin (MNC) on Ethereum Sepolia",
+                  "MiniChain Coin (MNC) · Ethereum Sepolia 测试网记录"
+                )}
+              </h2>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-3">
