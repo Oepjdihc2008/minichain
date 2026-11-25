@@ -96,6 +96,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/support" className="text-[#EAC77B] hover:text-white">
+                  {t("Support Us", "支持项目")}
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://github.com/Oepjdihc2008/minichain"
                   target="_blank"

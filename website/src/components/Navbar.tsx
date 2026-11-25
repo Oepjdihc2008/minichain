@@ -10,11 +10,12 @@ import { MncLogo } from "./MncLogo";
 const NAV_ITEMS = [
   { href: "/", en: "Home", zh: "首页" },
   { href: "/architecture", en: "Architecture", zh: "技术架构" },
-  { href: "/explorer", en: "MiniScan", zh: "MiniScan 浏览器" },
+  { href: "/explorer", en: "Explorer", zh: "MiniScan 浏览器" },
   { href: "/security", en: "Security", zh: "安全与测试" },
-  { href: "/docs", en: "Docs", zh: "技术文档" },
+  { href: "/docs", en: "Documentation", zh: "技术文档" },
   { href: "/open-source", en: "Open Source", zh: "开源代码" },
   { href: "/about", en: "About", zh: "关于项目" },
+  { href: "/support", en: "Support Us", zh: "支持项目" },
 ];
 
 export function Navbar() {
@@ -57,7 +58,7 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`nav-link rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`nav-link whitespace-nowrap rounded-lg px-2.5 py-2 text-[13px] font-medium transition-colors ${
                       active
                         ? "bg-indigo-500/10 text-white"
                         : "text-slate-300 hover:bg-slate-800/60 hover:text-white"
