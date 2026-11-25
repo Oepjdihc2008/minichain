@@ -4,14 +4,11 @@ import React, { useState } from "react";
 import {
   Bug,
   CheckCircle2,
-  Copy,
   ExternalLink,
   GitFork,
   GitPullRequest,
   HeartHandshake,
-  Lock,
   Share2,
-  ShieldAlert,
   ShieldCheck,
   Star,
 } from "lucide-react";
@@ -19,19 +16,23 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { MncLogo } from "@/components/MncLogo";
 import { CopyButton } from "@/components/CopyButton";
 
-interface DemoNetworkCard {
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+interface SupportNetworkCard {
   id: string;
   symbol: string;
   nameEn: string;
   nameZh: string;
   networkEn: string;
   networkZh: string;
-  placeholderAddress: string;
-  accentColor: string;
+  addressFormatEn?: string;
+  addressFormatZh?: string;
+  address: string;
+  qrPath: string;
   logo: React.ReactNode;
 }
 
-const DEMO_NETWORKS: DemoNetworkCard[] = [
+const SUPPORT_NETWORKS: SupportNetworkCard[] = [
   {
     id: "eth",
     symbol: "ETH",
@@ -39,8 +40,8 @@ const DEMO_NETWORKS: DemoNetworkCard[] = [
     nameZh: "Ethereum (ETH)",
     networkEn: "Only supports Ethereum network assets",
     networkZh: "仅支持接收 Ethereum 网络资产",
-    placeholderAddress: "DEMO-ONLY · 0x0000...DISABLED_PENDING_REVIEW",
-    accentColor: "#627EEA",
+    address: "0x05611eFdcEf5B15A5B21Fb21411fcBF96fCC0592",
+    qrPath: `${BASE_PATH}/support/qr-eth.png`,
     logo: (
       <svg viewBox="0 0 40 40" className="h-11 w-11" aria-hidden="true">
         <circle cx="20" cy="20" r="20" fill="#627EEA" />
@@ -56,8 +57,8 @@ const DEMO_NETWORKS: DemoNetworkCard[] = [
     nameZh: "Solana (SOL)",
     networkEn: "Only supports Solana network assets",
     networkZh: "仅支持接收 Solana 网络资产",
-    placeholderAddress: "DEMO-ONLY · SOL_PLACEHOLDER_DISABLED",
-    accentColor: "#14F195",
+    address: "7pvUFDS6GMr8JN3SP4G8RAFJ7X2jjc5VUVrvUyp4gGTi",
+    qrPath: `${BASE_PATH}/support/qr-sol.png`,
     logo: (
       <svg viewBox="0 0 40 40" className="h-11 w-11" aria-hidden="true">
         <circle cx="20" cy="20" r="20" fill="#0B1221" stroke="#9945FF" strokeWidth="1.5" />
@@ -78,10 +79,12 @@ const DEMO_NETWORKS: DemoNetworkCard[] = [
     symbol: "BTC",
     nameEn: "Bitcoin (BTC)",
     nameZh: "Bitcoin (BTC)",
-    networkEn: "Only supports Bitcoin (Native SegWit) network assets",
-    networkZh: "仅支持接收 Bitcoin (Native SegWit) 网络资产",
-    placeholderAddress: "DEMO-ONLY · bc1q_placeholder_disabled",
-    accentColor: "#F7931A",
+    networkEn: "Only supports Bitcoin network assets",
+    networkZh: "仅支持接收 Bitcoin 网络资产",
+    addressFormatEn: "Native SegWit (Bech32)",
+    addressFormatZh: "地址格式：Native SegWit",
+    address: "bc1qasfndp7uylllysnkvf4525yltn577ut7aqdls6",
+    qrPath: `${BASE_PATH}/support/qr-btc.png`,
     logo: (
       <svg viewBox="0 0 40 40" className="h-11 w-11" aria-hidden="true">
         <circle cx="20" cy="20" r="20" fill="#F7931A" />
@@ -104,10 +107,10 @@ const DEMO_NETWORKS: DemoNetworkCard[] = [
     symbol: "BNB",
     nameEn: "BNB Chain (BNB)",
     nameZh: "BNB Chain (BNB)",
-    networkEn: "Only supports BNB Smart Chain network assets",
+    networkEn: "Only supports BNB Chain network assets",
     networkZh: "仅支持接收 BNB Chain 网络资产",
-    placeholderAddress: "DEMO-ONLY · 0x0000...BNB_DISABLED",
-    accentColor: "#F3BA2F",
+    address: "0x05611eFdcEf5B15A5B21Fb21411fcBF96fCC0592",
+    qrPath: `${BASE_PATH}/support/qr-bnb.png`,
     logo: (
       <svg viewBox="0 0 40 40" className="h-11 w-11" aria-hidden="true">
         <circle cx="20" cy="20" r="20" fill="#F3BA2F" />
@@ -125,8 +128,8 @@ const DEMO_NETWORKS: DemoNetworkCard[] = [
     nameZh: "Tron (TRX)",
     networkEn: "Only supports Tron network assets",
     networkZh: "仅支持接收 Tron 网络资产",
-    placeholderAddress: "DEMO-ONLY · TRON_PLACEHOLDER_DISABLED",
-    accentColor: "#EB0029",
+    address: "TRRgkcYXYVdC7SvNqnVD4MZE9baJsW31eT",
+    qrPath: `${BASE_PATH}/support/qr-trx.png`,
     logo: (
       <svg viewBox="0 0 40 40" className="h-11 w-11" aria-hidden="true">
         <circle cx="20" cy="20" r="20" fill="#EB0029" />
@@ -143,7 +146,7 @@ export default function SupportPage() {
   const { t } = useLanguage();
   const [selectedNetId, setSelectedNetId] = useState<string>("eth");
 
-  const activeNet = DEMO_NETWORKS.find((n) => n.id === selectedNetId) || DEMO_NETWORKS[0];
+  const activeNet = SUPPORT_NETWORKS.find((n) => n.id === selectedNetId) || SUPPORT_NETWORKS[0];
 
   const nonFinancialActions = [
     {
@@ -196,7 +199,7 @@ export default function SupportPage() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#D9B66C]/40 bg-[#D9B66C]/10 px-3.5 py-1.5 text-xs font-semibold text-[#EAC77B]">
               <HeartHandshake className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>{t("Open-Source Community Support", "开源社区支持与共建")}</span>
+              <span>{t("Open-Source Community Support", "开源社区支持与赞助")}</span>
             </div>
 
             <div className="mt-5 flex items-center gap-4">
@@ -217,14 +220,14 @@ export default function SupportPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-xs text-emerald-200 max-w-xs">
+          <div className="max-w-xs rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-xs text-emerald-200">
             <div className="flex items-center gap-2 font-bold text-white">
               <ShieldCheck className="h-4 w-4 text-emerald-400" aria-hidden="true" />
               <span>{t("Zero Wallet Connection", "绝不连接任何钱包")}</span>
             </div>
             <p className="mt-1.5 leading-relaxed">
               {t(
-                "This page never requests browser wallet connections, never reads wallet permissions, and never initiates transactions.",
+                "This page never requests browser wallet connections, never reads wallet permissions, and never initiates transactions automatically.",
                 "本页面绝不要求访问者连接钱包，绝不读取钱包权限，也绝不自动发起任何链上交易。"
               )}
             </p>
@@ -232,19 +235,158 @@ export default function SupportPage() {
         </div>
       </section>
 
-      {/* Non-Financial Community Support Section */}
-      <section aria-labelledby="non-financial-heading" className="mt-12">
+      {/* Crypto Donation Receive Card Section */}
+      <section aria-labelledby="donation-card-heading" className="mt-12">
         <div className="max-w-3xl">
           <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#EAC77B]">
-            {t("Active Ways to Help Today", "当前最直接的开源支持方式")}
+            {t("Voluntary Open-Source Sponsorship", "自愿开源项目打赏支持")}
+          </span>
+          <h2 id="donation-card-heading" className="mt-1 text-2xl font-bold text-white sm:text-3xl">
+            {t("Sponsor via Multi-Chain Receive QR", "多链收款二维码与地址")}
+          </h2>
+          <p className="mt-2 text-sm text-slate-300">
+            {t(
+              "Select a network below to scan the QR code or copy the receive address. Always verify the selected network matches your sending wallet.",
+              "选择对应网络即可扫码或一键复制收款地址。转账前请务必核对发送网络与所选网络一致。"
+            )}
+          </p>
+        </div>
+
+        <div className="mt-8 grid items-start gap-8 lg:grid-cols-12">
+          {/* Network Selector Column */}
+          <div className="space-y-3 lg:col-span-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+              {t("Select Supported Network", "选择支持的打赏网络")}
+            </p>
+            <div className="grid gap-2.5">
+              {SUPPORT_NETWORKS.map((net) => {
+                const selected = net.id === selectedNetId;
+                return (
+                  <button
+                    key={net.id}
+                    type="button"
+                    onClick={() => setSelectedNetId(net.id)}
+                    aria-pressed={selected}
+                    className={`flex items-center justify-between rounded-2xl border p-3.5 text-left transition duration-200 ${
+                      selected
+                        ? "border-[#EAC77B] bg-[#101D35] shadow-[0_0_24px_rgba(234,199,123,0.16)]"
+                        : "border-slate-800 bg-obsidian-900/80 hover:border-slate-600"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="scale-90">{net.logo}</div>
+                      <div>
+                        <p className="text-sm font-bold text-white">
+                          {t(net.nameEn, net.nameZh)}
+                        </p>
+                        <p className="font-mono text-[11px] text-slate-400">
+                          {net.address.slice(0, 10)}...{net.address.slice(-6)}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="rounded-full border border-[#D9B66C]/35 bg-[#D9B66C]/10 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#EAC77B]">
+                      {net.symbol}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Centered Luxury Wallet-Style Receive QR Card */}
+          <div className="flex justify-center lg:col-span-7">
+            <div className="w-full max-w-md rounded-3xl border border-[#D9B66C]/45 bg-gradient-to-b from-[#101D35] via-[#0B1528] to-[#070E1C] p-6 shadow-[0_0_50px_rgba(217,182,108,0.14)] sm:p-8">
+              {/* Network Logo & Name */}
+              <div className="flex flex-col items-center text-center">
+                <div className="relative">
+                  {activeNet.logo}
+                  <span className="absolute -bottom-1 -right-1 rounded-full border border-[#101D35] bg-[#101D35] p-0.5">
+                    <MncLogo className="h-4 w-4" />
+                  </span>
+                </div>
+
+                <h3 className="mt-3 text-xl font-bold text-white">
+                  {activeNet.symbol} {t("Receive", "收款")}
+                </h3>
+
+                {/* Network Consistency Warning */}
+                <p className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-[#D9B66C]/35 bg-[#D9B66C]/10 px-3 py-1 text-xs font-medium text-[#EAC77B]">
+                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                  <span>{t(activeNet.networkEn, activeNet.networkZh)}</span>
+                </p>
+              </div>
+
+              {/* Centered QR Code Image */}
+              <div className="mt-6 rounded-2xl border border-[#D9B66C]/25 bg-[#060C18] p-5">
+                <div className="mx-auto flex w-fit items-center justify-center overflow-hidden rounded-2xl border border-[#D9B66C]/30 bg-[#081523] p-2.5 shadow-inner">
+                  <img
+                    src={activeNet.qrPath}
+                    alt={t(
+                      `${activeNet.nameEn} donation receive QR code`,
+                      `${activeNet.nameZh} 收款二维码`
+                    )}
+                    width={220}
+                    height={220}
+                    className="h-52 w-52 rounded-xl object-contain sm:h-56 sm:w-56"
+                  />
+                </div>
+
+                {/* Receive Address & One-Click Copy Button */}
+                <div className="mt-5 rounded-xl border border-slate-800 bg-[#0B1426] p-3.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-[11px] font-medium text-slate-400">
+                      {t("Receive Address", "收款地址")}
+                    </p>
+                    {activeNet.addressFormatEn && (
+                      <span className="rounded bg-slate-800 px-1.5 py-0.5 font-mono text-[10px] text-slate-300">
+                        {t(activeNet.addressFormatEn, activeNet.addressFormatZh)}
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-1.5 flex items-center justify-between gap-2">
+                    <code
+                      id={`support-addr-${activeNet.id}`}
+                      className="break-all font-mono text-xs text-slate-100"
+                    >
+                      {activeNet.address}
+                    </code>
+                    <CopyButton
+                      targetId={`support-addr-${activeNet.id}`}
+                      label={t(
+                        `Copy ${activeNet.symbol} receive address`,
+                        `复制 ${activeNet.symbol} 收款地址`
+                      )}
+                      compact
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Non-Investment Disclaimer */}
+              <p className="mt-4 text-center text-[11px] leading-relaxed text-slate-400">
+                {t(
+                  "Voluntary open-source donation only. No financial return, equity, or token allocation is offered. MNC on Sepolia has $0 monetary value.",
+                  "所有打赏均为自愿开源项目支持，不构成任何投资回报承诺或代币发售；Sepolia 测试网 MNC 不具备任何货币价值。"
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Non-Financial Community Support Section */}
+      <section aria-labelledby="non-financial-heading" className="mt-16">
+        <div className="max-w-3xl">
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-sky-400">
+            {t("Non-Financial Ways to Support", "非资金方式支持开源项目")}
           </span>
           <h2 id="non-financial-heading" className="mt-1 text-2xl font-bold text-white sm:text-3xl">
-            {t("Support MiniChain Without Spending Anything", "非资金方式支持开源项目")}
+            {t("Help Grow MiniChain on GitHub", "通过开源社区行动支持 MiniChain")}
           </h2>
           <p className="mt-2 text-sm text-slate-300">
             {t(
               "Open-source engineering thrives on code review, reproducibility testing, and community visibility.",
-              "开源工程项目的成长离不开全球开发者的代码审阅、测试反馈与社区分享。"
+              "开源工程项目的成长同样离不开全球开发者的代码审阅、测试反馈与社区分享。"
             )}
           </p>
         </div>
@@ -307,154 +449,6 @@ export default function SupportPage() {
               label={t("Copy MiniChain official website URL", "复制 MiniChain 官方网站链接")}
               compact
             />
-          </div>
-        </div>
-      </section>
-
-      {/* Reserved Crypto Support Card UI Preview (Disabled Demo Placeholder) */}
-      <section aria-labelledby="donation-preview-heading" className="mt-16">
-        <div className="max-w-3xl">
-          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-amber-300">
-            {t("Future Sponsorship UI Preview · Currently Disabled", "预留加密打赏界面预览 · 当前默认禁用")}
-          </span>
-          <h2 id="donation-preview-heading" className="mt-1 text-2xl font-bold text-white sm:text-3xl">
-            {t("Donation Receive Card (Non-Payment Demo Placeholder)", "打赏收款卡片（非收款演示占位界面）")}
-          </h2>
-        </div>
-
-        {/* Mandatory Governance & Non-Payment Notice */}
-        <div className="mt-4 rounded-2xl border border-amber-400/35 bg-amber-500/10 p-5 text-sm leading-relaxed text-amber-100">
-          <div className="flex items-start gap-3">
-            <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
-            <div>
-              <strong className="font-bold text-white">
-                {t("Live Donations Disabled by Default: ", "重要声明 — 真实收款功能默认禁用：")}
-              </strong>
-              {t(
-                "The receive card below is an explicitly labeled non-payment UI preview placeholder. No real wallet address or scannable payment QR code is displayed. Real financial sponsorship remains disabled until adult-assisted fund governance, privacy, and compliance review are completed.",
-                "下方展示的收款卡片仅为明确标注的非收款界面演示占位符，不显示真实私人钱包地址，也不生成真实支付二维码。真实收款模块默认禁用，待成年人协助完成资金管理、隐私及合规审核后再行评估。"
-              )}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 grid items-start gap-8 lg:grid-cols-12">
-          {/* Network Selector Column */}
-          <div className="lg:col-span-5 space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              {t("Preview Supported Network Layouts", "切换预览不同网络的收款卡片布局")}
-            </p>
-            <div className="grid gap-2.5">
-              {DEMO_NETWORKS.map((net) => {
-                const selected = net.id === selectedNetId;
-                return (
-                  <button
-                    key={net.id}
-                    type="button"
-                    onClick={() => setSelectedNetId(net.id)}
-                    aria-pressed={selected}
-                    className={`flex items-center justify-between rounded-2xl border p-3.5 text-left transition ${
-                      selected
-                        ? "border-[#EAC77B] bg-[#101D35] shadow-[0_0_24px_rgba(234,199,123,0.16)]"
-                        : "border-slate-800 bg-obsidian-900/80 hover:border-slate-600"
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="scale-90">{net.logo}</div>
-                      <div>
-                        <p className="text-sm font-bold text-white">
-                          {t(net.nameEn, net.nameZh)}
-                        </p>
-                        <p className="text-xs text-slate-400">
-                          {t("Demo Placeholder Mode", "非收款演示占位模式")}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="rounded-full border border-[#D9B66C]/35 bg-[#D9B66C]/10 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-[#EAC77B]">
-                      {net.symbol}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Centered Luxury Wallet-Style Receive Card (Demo Placeholder) */}
-          <div className="lg:col-span-7 flex justify-center">
-            <div className="w-full max-w-md rounded-3xl border border-[#D9B66C]/45 bg-gradient-to-b from-[#101D35] via-[#0B1528] to-[#070E1C] p-6 shadow-[0_0_50px_rgba(217,182,108,0.12)] sm:p-8">
-              {/* Top Network Logo & Name */}
-              <div className="flex flex-col items-center text-center">
-                <div className="relative">
-                  {activeNet.logo}
-                  <span className="absolute -bottom-1 -right-1 rounded-full border border-[#101D35] bg-[#101D35] p-0.5">
-                    <MncLogo className="h-4 w-4" />
-                  </span>
-                </div>
-
-                <h3 className="mt-3 text-xl font-bold text-white">
-                  {activeNet.symbol} {t("Receive (Demo)", "收款（演示占位）")}
-                </h3>
-
-                {/* Network Consistency Hint */}
-                <p className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-[#D9B66C]/30 bg-[#D9B66C]/10 px-3 py-1 text-xs font-medium text-[#EAC77B]">
-                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                  <span>{t(activeNet.networkEn, activeNet.networkZh)}</span>
-                </p>
-              </div>
-
-              {/* Centered Non-Scannable Demo QR Placeholder Area */}
-              <div className="mt-6 rounded-2xl border border-[#D9B66C]/25 bg-[#060C18] p-6">
-                <div
-                  role="img"
-                  aria-label={t(
-                    "Non-scannable demo QR placeholder — live donations are disabled",
-                    "非支付演示二维码占位区域 — 真实收款功能已禁用"
-                  )}
-                  className="mx-auto flex h-52 w-52 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#D9B66C]/40 bg-[#101D35]/70 p-4 text-center"
-                >
-                  <MncLogo className="h-14 w-14 opacity-90" />
-                  <span className="mt-3 inline-flex items-center gap-1.5 rounded-md bg-amber-500/15 px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-amber-300">
-                    <Lock className="h-3 w-3" aria-hidden="true" />
-                    {t("DEMO PLACEHOLDER", "非收款演示占位")}
-                  </span>
-                  <p className="mt-2 text-[11px] leading-relaxed text-slate-400">
-                    {t(
-                      "Not a real payment QR code. Disabled pending governance & compliance review.",
-                      "不生成真实支付二维码，待合规与资金管理审核后再评估。"
-                    )}
-                  </p>
-                </div>
-
-                {/* Placeholder Address + Disabled Copy Button */}
-                <div className="mt-5 rounded-xl border border-slate-800 bg-[#0B1426] p-3.5">
-                  <p className="text-[11px] font-medium text-slate-400">
-                    {t("Receive Address (Placeholder Only)", "收款地址（仅界面占位，不可转账）")}
-                  </p>
-                  <div className="mt-1.5 flex items-center justify-between gap-2">
-                    <code className="break-all font-mono text-xs text-slate-400">
-                      {activeNet.placeholderAddress}
-                    </code>
-                    <button
-                      type="button"
-                      disabled
-                      aria-disabled="true"
-                      title={t("Disabled — no real payment address configured", "已禁用 — 当前为非收款演示占位符")}
-                      className="inline-flex h-9 w-9 shrink-0 cursor-not-allowed items-center justify-center rounded-lg border border-slate-700 bg-slate-900/70 text-slate-500"
-                    >
-                      <Copy className="h-4 w-4" aria-hidden="true" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Explicit Non-Investment & Privacy Footer inside Card */}
-              <p className="mt-4 text-center text-[11px] leading-relaxed text-slate-400">
-                {t(
-                  "MiniChain is an open-source research project. Supporting MiniChain confers no financial return, equity, or token value. MNC on Sepolia has $0 monetary value.",
-                  "MiniChain 是开源技术研究项目，支持行为不构成任何投资回报承诺；Sepolia 测试网上的 MNC 代币不具备任何货币价值。"
-                )}
-              </p>
-            </div>
           </div>
         </div>
       </section>
