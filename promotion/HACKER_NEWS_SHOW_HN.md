@@ -13,7 +13,8 @@
 
 ## URL
 
-`https://github.com/Oepjdihc2008/minichain` *(or live GitHub Pages URL once deployed)*
+- **Repository:** `https://github.com/Oepjdihc2008/minichain`
+- **Live Static Docs & MiniScan Explorer:** `https://oepjdihc2008.github.io/minichain/`
 
 ---
 

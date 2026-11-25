@@ -23,7 +23,8 @@ I'm open-sourcing **MiniChain**, an engineering lab combining Foundry-tested Sol
 ### Scope & Honesty Note
 The repo also contains standalone Python BFT consensus experiments (Ed25519 two-phase QCs + SQLite lock persistence). Those observe local Anvil headers via read-only JSON-RPC and are **not** wired into Anvil's block-mining engine. Everything is MIT-licensed, unaudited, and strictly testnet-only ($0 value).
 
-Repo & Docs: `https://github.com/Oepjdihc2008/minichain`
+- **GitHub Repo:** `https://github.com/Oepjdihc2008/minichain`
+- **Live Site & MiniScan Explorer:** `https://oepjdihc2008.github.io/minichain/`
 
 Would love feedback on adding Foundry stateful `invariant_*` handlers or Halmos symbolic checks next!
 
