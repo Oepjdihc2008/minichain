@@ -1,0 +1,42 @@
+# Secrets, Private Keys & Validator Credentials (NEVER COMMIT)
+*.key
+*.pem
+*.keystore
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
+validator_keys/
+validator_keys_*/
+trusted_validators*.json
+
+# Unchecked Blockchain State & Local Databases (NEVER COMMIT)
+data/
+*.db
+*.sqlite
+*.sqlite3
+*backup*.json
+*state*.json
+replica.json
+broadcast/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Foundry
+contracts/out/
+contracts/cache/
+
+# Website / Node
+website/node_modules/
+website/.next/
+website/out/
+website/.vercel/
+website/.wrangler/
+*.tsbuildinfo
+.DS_Store
+*.log

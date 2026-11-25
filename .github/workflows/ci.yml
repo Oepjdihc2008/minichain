@@ -1,0 +1,69 @@
+name: MiniChain CI Verification
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  python-consensus-labs:
+    name: Python PoW & BFT Consensus Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install cryptography
+        run: pip install cryptography
+      - name: Run Core SHA-256 PoW & Tamper Test
+        run: python core-pow/blockchain.py
+      - name: Run Standalone BFT, Locking, Unlock & Finality Suites
+        working-directory: consensus-lab
+        run: |
+          python bft_test.py
+          python fault_test.py
+          python cross_round_test.py
+          python locking_test.py
+          python leader_test.py
+          python unlock_test.py
+          python finality_test.py
+
+  foundry-contracts-and-recovery:
+    name: Foundry Contracts (20/20 + 30k Fuzz) & 6/6 Recovery
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run Foundry Unit & Fuzz Suites
+        working-directory: contracts
+        run: |
+          forge test -vv
+          forge test --match-contract MNCFuzzTest --fuzz-runs 10000
+      - name: Run 6/6 Disaster Recovery Audit
+        working-directory: consensus-lab
+        run: python recovery_check.py
+
+  website-static-build:
+    name: Website Type-Check & Static Export
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: website/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build

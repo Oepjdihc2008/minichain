@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" width="920" height="480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="100%" stop-color="#0d1529"/>
+    </linearGradient>
+    <linearGradient id="planeA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="planeB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#db2777" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="920" height="480" rx="18" fill="url(#bg)"/>
+  <text x="36" y="42" fill="#f8fafc" font-family="monospace" font-size="18" font-weight="bold">MINICHAIN DUAL-PLANE TECHNICAL ARCHITECTURE</text>
+  <text x="36" y="64" fill="#94a3b8" font-family="monospace" font-size="12">Explicit Separation: Standalone Python BFT Consensus Lab vs. EVM Execution Environments</text>
+
+  <!-- Plane A -->
+  <rect x="32" y="84" width="856" height="202" rx="14" fill="url(#planeA)" stroke="#38bdf8" stroke-opacity="0.45"/>
+  <text x="52" y="110" fill="#7dd3fc" font-family="monospace" font-size="13" font-weight="bold">PLANE 1 · STANDALONE PYTHON CONSENSUS, CRYPTOGRAPHY &amp; SQLITE PERSISTENCE LAB</text>
+
+  <rect x="52" y="128" width="250" height="74" rx="10" fill="#090e1a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="177" y="156" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">Multi-Node Mesh</text>
+  <text x="177" y="178" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">HTTP /compare · TCP Vote · Spawn IPC</text>
+
+  <rect x="335" y="128" width="250" height="74" rx="10" fill="#090e1a" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="460" y="156" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">BFT Consensus Lab</text>
+  <text x="460" y="178" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">2-Phase QC (3/4) · PoLC Safe Unlock</text>
+
+  <rect x="618" y="128" width="250" height="74" rx="10" fill="#090e1a" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="743" y="156" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">SQLite ACID Storage</text>
+  <text x="743" y="178" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">BEGIN IMMEDIATE Locks · Read-Only Audit</text>
+
+  <rect x="52" y="218" width="816" height="50" rx="10" fill="#090e1a" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="460" y="248" text-anchor="middle" fill="#e2e8f0" font-family="monospace" font-size="12">Cryptographic Foundation: Canonical JSON SHA-256 Digest + Ed25519 Signatures + Trusted Key Registry</text>
+
+  <!-- Boundary -->
+  <line x1="40" y1="308" x2="880" y2="308" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <rect x="210" y="295" width="500" height="26" rx="13" fill="#090e1a" stroke="#fbbf24" stroke-opacity="0.8"/>
+  <text x="460" y="312" text-anchor="middle" fill="#fde68a" font-family="monospace" font-size="11">Read-Only JSON-RPC Header Observation Boundary (Not Integrated into EVM Mining)</text>
+
+  <!-- Plane B -->
+  <rect x="32" y="332" width="856" height="122" rx="14" fill="url(#planeB)" stroke="#c084fc" stroke-opacity="0.45"/>
+  <text x="52" y="358" fill="#e9d5ff" font-family="monospace" font-size="13" font-weight="bold">PLANE 2 · EVM SMART CONTRACT EXECUTION &amp; DISASTER RECOVERY PLANE</text>
+
+  <rect x="52" y="372" width="395" height="66" rx="10" fill="#090e1a" stroke="#c084fc" stroke-width="1.5"/>
+  <text x="249" y="398" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">Solidity 0.8.28 Smart Contracts (MNC ERC-20)</text>
+  <text x="249" y="420" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">Sepolia #11155111 (0x32C8...2Ee6) · 20/20 Tests · 30k Fuzz</text>
+
+  <rect x="473" y="372" width="395" height="66" rx="10" fill="#090e1a" stroke="#e879f9" stroke-width="1.5"/>
+  <text x="670" y="398" text-anchor="middle" fill="#f8fafc" font-family="sans-serif" font-size="14" font-weight="bold">State Sync &amp; Disaster Recovery</text>
+  <text x="670" y="420" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="11">Anvil Snapshot Export/Restore · 6/6 Parity Checks</text>
+</svg>

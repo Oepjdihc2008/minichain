@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" width="920" height="440">
+  <defs>
+    <linearGradient id="msBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="100%" stop-color="#0b1329"/>
+    </linearGradient>
+  </defs>
+  <rect width="920" height="440" rx="18" fill="url(#msBg)" stroke="#4f46e5" stroke-opacity="0.45"/>
+  <text x="36" y="42" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold">MINISCAN // READ-ONLY ETHEREUM SEPOLIA RPC EXPLORER</text>
+  <text x="36" y="70" fill="#ffffff" font-family="sans-serif" font-size="22" font-weight="bold">MiniScan Live On-Chain Telemetry</text>
+  <rect x="628" y="34" width="256" height="32" rx="8" fill="#064e3b" fill-opacity="0.45" stroke="#10b981" stroke-opacity="0.6"/>
+  <text x="756" y="54" text-anchor="middle" fill="#6ee7b7" font-family="monospace" font-size="11" font-weight="bold">100% READ-ONLY · NO WALLET</text>
+
+  <!-- Network Strip -->
+  <rect x="36" y="94" width="848" height="76" rx="12" fill="#090e1a" stroke="#6366f1" stroke-opacity="0.35"/>
+  <text x="58" y="120" fill="#94a3b8" font-family="sans-serif" font-size="11">Chain ID</text>
+  <text x="58" y="146" fill="#f8fafc" font-family="monospace" font-size="16" font-weight="bold">11155111 (Sepolia)</text>
+
+  <text x="278" y="120" fill="#94a3b8" font-family="sans-serif" font-size="11">MNC Deployment Block</text>
+  <text x="278" y="146" fill="#38bdf8" font-family="monospace" font-size="16" font-weight="bold">#12,207,520</text>
+
+  <text x="518" y="120" fill="#94a3b8" font-family="sans-serif" font-size="11">Deployed Bytecode</text>
+  <text x="518" y="146" fill="#a78bfa" font-family="monospace" font-size="16" font-weight="bold">3,004 bytes (Solc 0.8.28)</text>
+
+  <text x="748" y="120" fill="#94a3b8" font-family="sans-serif" font-size="11">RPC Status</text>
+  <text x="748" y="146" fill="#34d399" font-family="monospace" font-size="16" font-weight="bold">ONLINE</text>
+
+  <!-- Contract Card -->
+  <rect x="36" y="190" width="412" height="214" rx="12" fill="#090e1a" stroke="#6366f1" stroke-opacity="0.35"/>
+  <text x="58" y="220" fill="#f8fafc" font-family="sans-serif" font-size="15" font-weight="bold">1. Smart Contract &amp; Supply Query</text>
+  <text x="58" y="252" fill="#94a3b8" font-family="monospace" font-size="11">Contract: 0x32C80Bb0fd51D32c31b52795a181042BF90E2Ee6</text>
+  <text x="58" y="284" fill="#e2e8f0" font-family="monospace" font-size="12">Token Name:   MiniChain Coin (MNC)</text>
+  <text x="58" y="312" fill="#34d399" font-family="monospace" font-size="13" font-weight="bold">Total Supply: 1,000,000 MNC</text>
+  <text x="58" y="340" fill="#e2e8f0" font-family="monospace" font-size="12">Decimals:     18</text>
+  <text x="58" y="372" fill="#fbbf24" font-family="monospace" font-size="11">Valuation:    Experimental Testnet Token ($0)</text>
+
+  <!-- Tx Decoder Card -->
+  <rect x="472" y="190" width="412" height="214" rx="12" fill="#090e1a" stroke="#6366f1" stroke-opacity="0.35"/>
+  <text x="494" y="220" fill="#f8fafc" font-family="sans-serif" font-size="15" font-weight="bold">2. Genesis Mint Transaction Decoder</text>
+  <text x="494" y="252" fill="#94a3b8" font-family="monospace" font-size="11">Tx: 0x40c220f1c9f4bdcd770965b8...13d4b7b4b8</text>
+  <text x="494" y="284" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold">Status:       SUCCESS (Gas Used: 4,966,820)</text>
+  <text x="494" y="312" fill="#818cf8" font-family="monospace" font-size="12">Event:        Transfer(address,address,uint256)</text>
+  <text x="494" y="340" fill="#e2e8f0" font-family="monospace" font-size="11">From:         0x0000000000000000000000000000000000000000</text>
+  <text x="494" y="368" fill="#e2e8f0" font-family="monospace" font-size="11">Amount:       1,000,000 MNC</text>
+</svg>
